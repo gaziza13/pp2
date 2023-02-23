@@ -6,5 +6,3 @@ print('The area of the polygon is:',int(s))
 
 
 
-
-
