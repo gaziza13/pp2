@@ -3,7 +3,7 @@ from random import randint, randrange
 pygame.init()
 
 w, h = 800, 800
-fps, level, step = 10, 0, 40
+fps, level, step = 5, 0, 40
 screen = pygame.display.set_mode((w, h))
 pygame.display.set_caption('Snake Game')
 is_running, lose = True, False
@@ -68,7 +68,7 @@ class Snake:
             pygame.draw.rect(screen, self.color, (part[0], part[1], step, step))
 
     # проверяем когда змейка съедает еду
-    def collide_food(self, f:Food):
+    def collide_food(self, Food):
         if self.body[0][0] == f.x and self.body[0][1] == f.y: # если координаты головы змейки совпадают с координатами еды
             self.score += 1
             self.body.append([1000, 1000])
@@ -81,7 +81,7 @@ class Snake:
 
 
     # проверяем чтобы еда не оказалась на теле змейки
-    def check_food(self, f:Food):
+    def check_food(self, Food):
         if [f.x, f.y] in self.body: # если координаты еды входят в массив координат тела змейки
             f.draw2() # заново рисуем еду
 
@@ -126,9 +126,9 @@ while is_running:
     s.check_food(f)
 
     # высвечиваем текущие баллы и уровень на экран
-    counter = score.render(f'Score: {s.score}', True, 'black')
+    counter = score.render(f'Score: {s.score}', True, 'white')
     screen.blit(counter, (50, 50))
-    l = score.render(f'Level: {level}', True, 'black')
+    l = score.render(f'Level: {level}', True, 'white')
     screen.blit(l, (50, 80))
 
     # условие для перехода на следующий уровень
