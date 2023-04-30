@@ -178,6 +178,7 @@ while is_running:
                 lose = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_p:
+                    '''
                     if s.score == 1:
                         score = 100
                     elif s.score == 2:
@@ -185,10 +186,12 @@ while is_running:
                     elif s.score == 3:
                         score = 300
                     else: score = 0
+                    '''
                     current.execute("INSERT INTO score (user_id, score, level) VALUES (%s, %s, %s)",
                                     (user_id, s.score, level))
                     config.commit()
                     print("Score saved at level {}!".format(level))
+
 
                     # pause the game
                     paused = True
